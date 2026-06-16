@@ -6,11 +6,16 @@ This document covers the full setup and workflow for building and running the An
 
 ## Prerequisites
 
-### 1. Java (JDK 17+)
+### 1. Java JDK 21 — Eclipse Temurin (required)
+
+Use Eclipse Temurin JDK 21 — other distributions (e.g. Ubuntu's OpenJDK) may not be recognized by Gradle's toolchain detection.
+
+Download from: https://adoptium.net/temurin/releases/?version=21
+
+After installing, set `JAVA_HOME` to the Temurin installation path and make sure `javac` is available:
 ```bash
-java -version
+javac -version  # must print javac 21.x.x
 ```
-Already available as OpenJDK 21 on the dev machine.
 
 ### 2. Android SDK (command-line tools)
 
@@ -27,6 +32,7 @@ rm cmdline-tools.zip
 Add to `~/.bashrc`:
 ```bash
 export ANDROID_HOME=$HOME/Android
+export JAVA_HOME=/path/to/temurin-21  # adjust to your Temurin install path
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
 ```
 
@@ -35,7 +41,7 @@ Then reload: `source ~/.bashrc`
 Install required SDK packages:
 ```bash
 yes | sdkmanager --licenses
-sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+sdkmanager "platform-tools" "platforms;android-35" "platforms;android-36" "build-tools;35.0.0"
 ```
 
 ### 3. Android Emulator (if no physical device)
