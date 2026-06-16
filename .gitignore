@@ -1,4 +1,8 @@
 index.zip
+
+# Mobile (Capacitor)
+www/
+android/
 assets_in_progress/
 ideas/advanced_research.txt
 node_modules/
