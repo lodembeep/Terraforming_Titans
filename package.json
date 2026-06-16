@@ -6,8 +6,8 @@
   "scripts": {
     "electron:dev": "electron .",
     "test": "jest",
-    "mobile:dev": "ANDROID_HOME=$HOME/Android cap run android --live-reload",
-    "mobile:release": "ANDROID_HOME=$HOME/Android node scripts/mobile-build.js && cap sync android && cap build android"
+    "mobile:dev": "ANDROID_HOME=$HOME/Android JAVA_HOME=/usr/lib/jvm/temurin-21-jdk-amd64 cap run android --live-reload",
+    "mobile:release": "ANDROID_HOME=$HOME/Android JAVA_HOME=/usr/lib/jvm/temurin-21-jdk-amd64 node scripts/mobile-build.js && cap sync android && cap build android"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
