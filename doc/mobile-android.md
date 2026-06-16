@@ -38,14 +38,41 @@ yes | sdkmanager --licenses
 sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 ```
 
-### 3. Node.js + npm
+### 3. Android Emulator (if no physical device)
+
+Install the emulator and a system image (~8GB, ensure enough free disk space):
+```bash
+sdkmanager "emulator" "system-images;android-35;google_apis;x86_64"
+```
+
+Add the emulator to `PATH` in `~/.bashrc`:
+```bash
+export PATH=$PATH:$ANDROID_HOME/emulator
+```
+
+Create a virtual device (Pixel 6 profile):
+```bash
+avdmanager create avd -n TT_test -k "system-images;android-35;google_apis;x86_64" --device "pixel_6"
+```
+
+Start the emulator:
+```bash
+emulator -avd TT_test -no-snapshot-load &
+```
+
+Wait until it's fully booted before running `mobile:dev`:
+```bash
+adb wait-for-device shell 'until getprop sys.boot_completed | grep -q "1"; do sleep 3; done && echo ready'
+```
+
+### 4. Node.js + npm
 Already present. Run `node --version` to confirm.
 
 ---
 
 ## First-Time Project Setup
 
-These steps have already been done on the `mobile-tauri` branch. Listed here for reference if setting up on a new machine.
+These steps have already been done on the `mobile-android` branch. Listed here for reference if setting up on a new machine.
 
 ```bash
 npm install
