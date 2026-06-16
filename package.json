@@ -5,11 +5,16 @@
   "main": "electron/main.cjs",
   "scripts": {
     "electron:dev": "electron .",
-    "test": "jest"
+    "test": "jest",
+    "mobile:dev": "cap run android --livereload",
+    "mobile:release": "node scripts/mobile-build.js && cap sync android && cap build android"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/cli": "^8.4.0",
+    "@capacitor/core": "^8.4.0",
     "babel-jest": "^30.2.0",
     "electron": "^42.4.0",
     "jest": "^30.2.0",
