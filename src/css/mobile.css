@@ -1,0 +1,134 @@
+/* Mobile layout overrides — applies on screens narrower than 768px */
+@media (max-width: 768px) {
+
+    /* Prevent horizontal overflow on root elements */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Stack the three-column layout vertically */
+    .tab-content-wrapper {
+        flex-direction: column;
+        height: auto;
+        min-height: calc(100vh - 80px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        gap: 0;
+    }
+
+    /* Resource panel: full width, compact fixed height at the top */
+    .resource-wrapper {
+        flex: none;
+        width: 100%;
+        min-width: 0;
+        height: 35vh;
+        max-height: 35vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    /* Tab content: full width, scrollable */
+    .tab-content {
+        flex: 1;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 50vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    /* Journal: full-screen overlay on mobile when open */
+    .journal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 500;
+        flex: none;
+        border-left: none;
+        box-sizing: border-box;
+    }
+
+    /* Keep collapsed state working */
+    .journal.collapsed {
+        display: none;
+    }
+
+    /* Tighten up the top tabs bar */
+    .tabs {
+        padding: 5px;
+        gap: 4px;
+    }
+
+    .tab {
+        flex: 1 0 80px;
+        min-width: 80px;
+        font-size: 0.78em;
+        padding: 8px 4px;
+    }
+
+    /* Subtabs: tighter on mobile */
+    .buildings-subtabs,
+    .colonies-subtabs,
+    .research-subtabs,
+    .projects-subtabs,
+    .terraforming-subtabs,
+    .hope-subtabs,
+    .settings-subtabs,
+    .space-subtabs {
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .building-subtab,
+    .colony-subtab,
+    .research-subtab,
+    .projects-subtab,
+    .terraforming-subtab,
+    .hope-subtab,
+    .settings-subtab,
+    .space-subtab {
+        flex: 1 0 70px;
+        min-width: 70px;
+        font-size: 0.78em;
+        padding: 6px 4px;
+    }
+
+    /* Journal-collapsed adjustments: no margin needed since layout is vertical */
+    body.journal-collapsed .tab-content {
+        margin-right: 0;
+    }
+
+    body.journal-collapsed .buildings-subtabs,
+    body.journal-collapsed .colonies-subtabs,
+    body.journal-collapsed .research-subtabs,
+    body.journal-collapsed .projects-subtabs,
+    body.journal-collapsed .terraforming-subtabs,
+    body.journal-collapsed .hope-subtabs,
+    body.journal-collapsed .settings-subtabs,
+    body.journal-collapsed .space-subtabs {
+        margin-right: 0;
+    }
+
+    /* Show journal button: reposition for vertical layout */
+    #show-journal-button {
+        top: 45vh;
+        right: 0;
+    }
+
+    /* Reduce base font size slightly for more content density */
+    html {
+        font-size: 14px;
+    }
+}
